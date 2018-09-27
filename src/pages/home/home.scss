@@ -1,3 +1,37 @@
 page-home {
 
+    .backgound-start-page {
+        background-image: url('../assets/imgs/background1.png');
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+      .backgound-home-page {
+        background-image: url('../assets/imgs/background2.png');
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+     .label{
+        color:white; 
+        font-size:15px;
+        font-family: verdana;
+      }
+
+      .label-home-page{
+        color:black;
+        font-size:15px;
+        font-family: verdana;
+      }
+
+      .place-holder{
+        background-color: transparent; 
+        font-size:20px; 
+        font-family: verdana;
+      }
+
 }

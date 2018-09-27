@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-navbar color="facebook">
+        <ion-title>Offer on Item</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="finalPrice" text-center>
+    <div class ="card">
+        <div class = "item item-avatar">
+            <img width="120px" height="120px" src = "{{finalPrice.imgURL}}">
+        </div>
+        <div text-wrap style="background-color: transparent; font-size:15px; font-family: verdana;">
+            <label class="item-name-label"> ₹{{finalPrice.itemName}}</label>
+        </div>
+    </div>
+    <ion-item text-center>
+        <div *ngIf="samePrice;else diffPrice">
+            <label class="item-price-label"> ₹{{finalPrice.finalPrice}}</label>
+        </div>
+        <ng-template #diffPrice>
+            <table style="width:100%;" class="padding">
+                <tr>
+                    <label class="item-price-label"> ₹{{finalPrice.price}}</label>
+                </tr>
+                <tr>
+                   <label hidden class="item-price-lbl" id ="priceLabel"></label>
+                    <img id="item-price-coupon" style="width:90px;" src={{couponPath}} (click)="showPrice(finalPrice.finalPrice)">
+                </tr>
+              </table>                     
+        </ng-template>  
+    </ion-item>
+
+    <div *ngIf="competetorItems">
+        <h6 style="color:black; font-family:verdana; font-size:15px">Competitor Prices</h6>
+        <div style="display: inline-block;font-family:verdana; font-size:12px" *ngFor="let item of competetorItems">
+            <table style="width:100%;" class="padding">
+                <tr>
+                    &nbsp;&nbsp;&nbsp;<img style="width:50px" src = "{{item.ImgUrl}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </tr>
+                <tr>
+                    <td>&nbsp;&nbsp;&nbsp;<b>{{item.price}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div *ngIf="recommendationItems">
+        <h6 style="color:black; font-family:verdana; font-size:15px">You May Also Like</h6>
+        <ion-item>
+            <div class = "card" style="display: inline-block;" *ngFor="let item of recommendationItems">
+                <ion-item>
+                    <img style="width:80px" src = "{{item.imgUrl}}" (click)="showItem(item.barcode)">
+                </ion-item>
+            </div>
+        </ion-item>
+    </div>
+</ion-content>

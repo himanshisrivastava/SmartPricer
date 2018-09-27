@@ -1,0 +1,41 @@
+ion-tab{
+    ion-content{
+        .scroll-content{
+            margin-top: 44px;
+            margin-bottom: 49px;
+            .suggestion-list ion-item{
+                background-color: #f4f4f4;
+            }
+        }
+    }
+}
+
+.item-name-label{
+    color:black;
+    font-size:12px;
+    font-family: verdana;
+}
+
+.item-price-label{
+    color:black;
+    font-size:15px;
+    font-family: verdana;
+}
+
+.item-price-btn{
+    font-size:30px;
+    font-family: verdana;
+}
+
+.item-price-lbl{
+    font-size:15px;
+    font-family: verdana;
+    font-weight:bold;
+}
+
+.item-heading{
+    color:blue;
+    font-size:12px;
+    font-family: verdana;
+    font-weight:bold;
+}

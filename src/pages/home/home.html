@@ -1,14 +1,87 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar color="facebook">
+        <ion-title text-center>SMART PRICE</ion-title>
+    </ion-navbar>
 </ion-header>
+<ion-content>
+    <div *ngIf="isLoggedIn; else facebookLogin" padding class="background-satrt-page">
+        <div *ngIf="isFBLoggedIn; else Login" class="label-home-page">
+            <div>
+                 Hello, {{userData.first_name}}
+            </div>
+            <div text-center>
+                <img width="120px" height="120px" src="http://graph.facebook.com/{{userData.id}}/picture?type=large" alt="{{userData.name}}"/>
+            </div>
+        </div>
+        <ng-template #Login>
+            <div>
+                Hello, {{userName}}
+            </div>
+            <div text-center>
+                <img width="120px" height="120px" src="{{userImgUrl}}"/>
+            </div>
+        </ng-template>
+        <div *ngIf="recommendationItems" text-center>
+            <ion-list>
+                <div class="label-home-page">
+                    Your Recommendations
+                </div>
+                <div class="card" style="display:inline-block;" *ngFor="let item of recommendationItems">
+                    <ion-item>
+                        <img style="width:70px;" src="{{item.imgUrl}}" (click)="showItem(item.barcode)">
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+        <div *ngIf="historyItems" text-center>
+            <ion-list>
+                <div class="label-home-page">
+                    Your Previous Scans
+                </div>
+                <div class="card" style="display:inline-block;" *ngFor="let item of historyItems">
+                    <ion-item>
+                        <img style="width:70px;" src="{{item.imgUrl}}" (click)="showItem(item.barcode)">
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+        <div *ngIf="newArrivals" text-center>
+            <ion-list>
+                <div class="label-home-page">
+                    New Arrivals
+                </div>
+                <div class="card" style="display:inline-block;" *ngFor="let item of newArrivals">
+                    <ion-item>
+                        <img style="width:70px;" src="{{item.imgUrl}}" (click)="showItem(item.barcode)">
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+        <div text-center>
+            <ion-icon style="background-color:transparent; font-size:50px;" name="camera" primary (click)="scan()"></ion-icon>
+        </div>
+        <div text-center>
+            <button ion-button round color="facebook" (click)="logout()">Logout</button>
+        </div>
+    </div>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ng-template #facebookLogin>
+        <div padding class="backgound-start-page" style="height: 90vh; text-align:center" >
+            <img style="margin: 20px;" width="150" height="150" src="assets/imgs/retailerLogo.png"/>
+            <ion-item class="place-holder">
+                <ion-icon name="person" item-left primary></ion-icon>
+                <ion-input type="text" placeholder="Username"></ion-input>
+            </ion-item>
+            <ion-item class="place-holder">
+                <ion-icon name="lock" item-left primary></ion-icon>
+                <ion-input type="password" placeholder="Password"></ion-input>
+            </ion-item>
+            <div style="margin: 20px 0px;">
+                <button ion-button color="login" large full (click)="login()">LOG IN</button>
+                <label class="label">or</label>
+                <button ion-button large full color="facebook" style="text-transform: none;" (click)="login_fb()">Log in With Facebook</button>
+                <label class="label">Don't have account yet? Sign Up.</label>
+            </div>
+        </div>
+    </ng-template>
 </ion-content>
