@@ -1,0 +1,7 @@
+{
+  "name": "SmartPricer",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
